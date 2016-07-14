@@ -197,7 +197,7 @@ summarize(cyl4s, mean = mean(mpg))</pre>
 <li>sample_n</li>
 </ul>
 
-</article></slide><slide class=''><hgroup><h2>filter()</h2></hgroup><article  id="filter" class="build">
+</article></slide><slide class=''><hgroup><h2>filter()</h2></hgroup><article  id="filter" class="build smaller">
 
 <p>Allows you to select a subset of the <strong>rows</strong> of a data frame. The first argument is the name of the data frame, the following arguments are the filters that you&#39;d like to apply.</p>
 
@@ -206,7 +206,8 @@ summarize(cyl4s, mean = mean(mpg))</pre>
 <pre class = 'prettyprint lang-r'>library(pnwflights14)
 filter(flights, month == 1, day == 1)</pre>
 
-<pre >## # A tibble: 419 x 16
+<pre >## Source: local data frame [419 x 16]
+## 
 ##     year month   day dep_time dep_delay arr_time arr_delay carrier tailnum
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;   &lt;chr&gt;   &lt;chr&gt;
 ## 1   2014     1     1        1        96      235        70      AS  N508AS
@@ -219,9 +220,9 @@ filter(flights, month == 1, day == 1)</pre>
 ## 8   2014     1     1      526        -4     1148        15      UA  N813UA
 ## 9   2014     1     1      527         7      917        24      UA  N75433
 ## 10  2014     1     1      536         1     1334        -6      UA  N574UA
-## # ... with 409 more rows, and 7 more variables: flight &lt;int&gt;,
-## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
-## #   minute &lt;dbl&gt;</pre>
+## ..   ...   ...   ...      ...       ...      ...       ...     ...     ...
+## Variables not shown: flight &lt;int&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time
+##   &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;.</pre>
 
 </article></slide><slide class=''><hgroup><h2>Constructing filters</h2></hgroup><article  id="constructing-filters" class="build">
 
@@ -231,7 +232,8 @@ filter(flights, month == 1, day == 1)</pre>
 
 <pre class = 'prettyprint lang-r'>filter(flights, month == 1 | month == 2)</pre>
 
-<pre >## # A tibble: 23,044 x 16
+<pre >## Source: local data frame [23,044 x 16]
+## 
 ##     year month   day dep_time dep_delay arr_time arr_delay carrier tailnum
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;   &lt;chr&gt;   &lt;chr&gt;
 ## 1   2014     1     1        1        96      235        70      AS  N508AS
@@ -244,9 +246,9 @@ filter(flights, month == 1, day == 1)</pre>
 ## 8   2014     1     1      526        -4     1148        15      UA  N813UA
 ## 9   2014     1     1      527         7      917        24      UA  N75433
 ## 10  2014     1     1      536         1     1334        -6      UA  N574UA
-## # ... with 23,034 more rows, and 7 more variables: flight &lt;int&gt;,
-## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
-## #   minute &lt;dbl&gt;</pre>
+## ..   ...   ...   ...      ...       ...      ...       ...     ...     ...
+## Variables not shown: flight &lt;int&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time
+##   &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;.</pre>
 
 </article></slide><slide class=''><hgroup><h2>Exercise 1</h2></hgroup><article  id="exercise-1" class="build">
 
@@ -301,7 +303,8 @@ filter(flights, distance &gt; 2000 | air_time &gt; 5 * 60)</pre>
 
 <pre class = 'prettyprint lang-r'>distinct(select(flights, origin, dest))</pre>
 
-<pre >## # A tibble: 115 x 2
+<pre >## Source: local data frame [115 x 2]
+## 
 ##    origin  dest
 ##     &lt;chr&gt; &lt;chr&gt;
 ## 1     PDX   ANC
@@ -314,7 +317,7 @@ filter(flights, distance &gt; 2000 | air_time &gt; 5 * 60)</pre>
 ## 8     SEA   DEN
 ## 9     SEA   EWR
 ## 10    PDX   DEN
-## # ... with 105 more rows</pre>
+## ..    ...   ...</pre>
 
 </article></slide><slide class=''><hgroup><h2>mutate()</h2></hgroup><article  id="mutate" class="build">
 
@@ -322,7 +325,8 @@ filter(flights, distance &gt; 2000 | air_time &gt; 5 * 60)</pre>
 
 <pre class = 'prettyprint lang-r'>mutate(flights, gain = arr_delay - dep_delay)</pre>
 
-<pre >## # A tibble: 162,049 x 17
+<pre >## Source: local data frame [162,049 x 17]
+## 
 ##     year month   day dep_time dep_delay arr_time arr_delay carrier tailnum
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;   &lt;chr&gt;   &lt;chr&gt;
 ## 1   2014     1     1        1        96      235        70      AS  N508AS
@@ -335,9 +339,9 @@ filter(flights, distance &gt; 2000 | air_time &gt; 5 * 60)</pre>
 ## 8   2014     1     1      526        -4     1148        15      UA  N813UA
 ## 9   2014     1     1      527         7      917        24      UA  N75433
 ## 10  2014     1     1      536         1     1334        -6      UA  N574UA
-## # ... with 162,039 more rows, and 8 more variables: flight &lt;int&gt;,
-## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
-## #   minute &lt;dbl&gt;, gain &lt;dbl&gt;</pre>
+## ..   ...   ...   ...      ...       ...      ...       ...     ...     ...
+## Variables not shown: flight &lt;int&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time
+##   &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, gain &lt;dbl&gt;.</pre>
 
 </article></slide><slide class=''><hgroup><h2>summarize() and sample_n()</h2></hgroup><article  id="summarize-and-sample_n" class="build">
 
@@ -345,28 +349,30 @@ filter(flights, distance &gt; 2000 | air_time &gt; 5 * 60)</pre>
 
 <pre class = 'prettyprint lang-r'>summarize(flights, delay = mean(dep_delay, na.rm = TRUE))</pre>
 
-<pre >## # A tibble: 1 x 1
+<pre >## Source: local data frame [1 x 1]
+## 
 ##      delay
 ##      &lt;dbl&gt;
 ## 1 6.133859</pre>
 
 <pre class = 'prettyprint lang-r'>sample_n(flights, 10)</pre>
 
-<pre >## # A tibble: 10 x 16
+<pre >## Source: local data frame [10 x 16]
+## 
 ##     year month   day dep_time dep_delay arr_time arr_delay carrier tailnum
 ##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;   &lt;chr&gt;   &lt;chr&gt;
-## 1   2014     6    30     2053         3     2346        12      AS  N537AS
-## 2   2014     6    30      641        -4     1219        -9      AS  N593AS
-## 3   2014     3     6      701        -9      904        -7      AS  N537AS
-## 4   2014     1     4     2024         9     2251        -9      AS  N402AS
-## 5   2014     1    15     2027        -3     2154       -26      WN  N786SW
-## 6   2014     6    13     1603        -7     2154        -1      AA  N3JJAA
-## 7   2014     6    10     2052        -3      502        -6      B6  N633JB
-## 8   2014     7    19     1622        22     1901        11      WN  N265WN
-## 9   2014     2    12      612        -3      850        -1      AS  N592AS
-## 10  2014     4     6     1619        -6     1823       -17      AS  N615AS
-## # ... with 7 more variables: flight &lt;int&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
-## #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;</pre>
+## 1   2014     6    26     1417        27     1600         0      WN  N476WN
+## 2   2014     7    23     2002        37     2240        37      AS  N625AS
+## 3   2014     7    11      859        -1     1632       -15      DL  N137DL
+## 4   2014    10    19     1349        -1     1513        -2      WN  N764SW
+## 5   2014     7    11     1131        71     1341        76      VX  N838VA
+## 6   2014     7    22      827        -3     1413        -4      AS  N317AS
+## 7   2014     2    14     2229        37      605         5      UA  N37290
+## 8   2014     3    10     1551        71     1914        64      WN  N394SW
+## 9   2014     4    19      949       -11     1302         2      HA  N385HA
+## 10  2014     1    10       16        56      540        40      AA  N3JCAA
+## Variables not shown: flight &lt;int&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time
+##   &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;.</pre>
 
 </article></slide><slide class=''><hgroup><h2>Exercise 2</h2></hgroup><article  id="exercise-2" class="build">
 
@@ -393,7 +399,8 @@ avg_speed_df &lt;- summarize(by_tailnum,
                        avg_speed = mean(speed, na.rm = TRUE))
 arrange(avg_speed_df, desc(avg_speed))</pre>
 
-<pre >## # A tibble: 3,023 x 3
+<pre >## Source: local data frame [3,023 x 3]
+## 
 ##    tailnum count avg_speed
 ##      &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
 ## 1   N306DQ     1  597.7982
@@ -406,7 +413,7 @@ arrange(avg_speed_df, desc(avg_speed))</pre>
 ## 8   N5DWAA     1  567.5000
 ## 9   N807NW     2  566.7639
 ## 10  N5DNAA     2  564.8443
-## # ... with 3,013 more rows</pre>
+## ..     ...   ...       ...</pre>
 
 </article></slide><slide class=''><hgroup><h2>Chaining</h2></hgroup><article  id="chaining" class="build">
 
@@ -417,7 +424,8 @@ arrange(avg_speed_df, desc(avg_speed))</pre>
   summarize(count = n(), avg_speed = mean(speed, na.rm = TRUE)) %&gt;%
   arrange(desc(avg_speed))</pre>
 
-<pre >## # A tibble: 3,023 x 3
+<pre >## Source: local data frame [3,023 x 3]
+## 
 ##    tailnum count avg_speed
 ##      &lt;chr&gt; &lt;int&gt;     &lt;dbl&gt;
 ## 1   N306DQ     1  597.7982
@@ -430,7 +438,7 @@ arrange(avg_speed_df, desc(avg_speed))</pre>
 ## 8   N5DWAA     1  567.5000
 ## 9   N807NW     2  566.7639
 ## 10  N5DNAA     2  564.8443
-## # ... with 3,013 more rows</pre>
+## ..     ...   ...       ...</pre>
 
 </article></slide><slide class=''><hgroup><h2>Exercise 3</h2></hgroup><article  id="exercise-3" class="build">
 
@@ -443,7 +451,8 @@ arrange(avg_speed_df, desc(avg_speed))</pre>
   summarize(avg_delay = mean(dep_delay, na.rm = TRUE)) %&gt;%
   arrange(desc(avg_delay))</pre>
 
-<pre >## # A tibble: 11 x 2
+<pre >## Source: local data frame [11 x 2]
+## 
 ##    carrier avg_delay
 ##      &lt;chr&gt;     &lt;dbl&gt;
 ## 1       WN 13.329137
